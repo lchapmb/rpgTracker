@@ -1,9 +1,10 @@
 import React from "react";
+import Typography from "@mui/material/Typography";
 
 export default function HomePage() {
   return (
-    <header className="App-header">
-      <h1>RPG Tracker</h1>
-    </header>
+    <Typography variant="h1" component="div" gutterBottom>
+      RPG Tracker
+    </Typography>
   );
 }
