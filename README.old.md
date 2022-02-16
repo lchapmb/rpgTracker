@@ -1,7 +1,9 @@
 # rpgTracker
+
 A project to create a battle tracker for GMing an rpg, focussing on DnD
 
 ## What do I need/want?
+
 - track player names, health, armour class, initiative, status?
 - track npcs names, health, armour class, initiative, status
 - display the players and npcs in a list ordered by intiative when fighting
@@ -11,11 +13,14 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - campaign notes
 
 ## design
+
+- [] want to make use of routes
 - [] homepage
 - [] create player form
 - [] edit player
 
 ## Players
+
 - [] have names
 - [] have health
 - [] have ac
@@ -26,6 +31,7 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - [] have luck
 
 ## NPCs
+
 - [] have names
 - [] have health
 - [] have ac
@@ -36,13 +42,16 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - [] have luck
 
 ## Combat
+
 - [] order by iniative
 - [] alter health
 - [] display ac
 - [] other stuff I'm sure
 
 ## Maps
+
 - [] add notes to maps section
 
 ## Campaign/session notes
+
 - [] add more to compaign notes section

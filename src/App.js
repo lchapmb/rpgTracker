@@ -1,11 +1,17 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import "./App.css";
 import HomePage from "./components/HomePage";
 
+export const UserContext = createContext();
+
 function App() {
+  const [userName] = useState("GM");
+
   return (
     <div className="App">
-      <HomePage />
+      <UserContext.Provider value={{ userName }}>
+        <HomePage />
+      </UserContext.Provider>
     </div>
   );
 }
