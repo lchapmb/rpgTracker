@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { StyledEngineProvider } from "@mui/material/styles";
 import "./App.css";
 import HomePage from "./components/HomePage";
 
@@ -8,11 +9,13 @@ function App() {
   const [userName] = useState("GM");
 
   return (
-    <div className="App">
-      <UserContext.Provider value={{ userName }}>
-        <HomePage />
-      </UserContext.Provider>
-    </div>
+    <StyledEngineProvider injectFirst>
+      <div className="App">
+        <UserContext.Provider value={{ userName }}>
+          <HomePage />
+        </UserContext.Provider>
+      </div>
+    </StyledEngineProvider>
   );
 }
 
