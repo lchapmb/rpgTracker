@@ -11,13 +11,18 @@ import Button from "@mui/material/Button";
 
 import { UserContext } from "../../App";
 
+// const pages = [
+//   "Create Player",
+//   "Player Characters",
+//   "NPCs",
+//   "Campaigns",
+//   "Maps",
+//   "Account",
+// ];
+
 const pages = [
-  "Create Player",
-  "Player Characters",
-  "NPCs",
-  "Campaigns",
-  "Maps",
-  "Account",
+  { title: "Home", path: "/" },
+  { title: "Create Player", path: "/create-player" },
 ];
 
 export default function HomePage() {
@@ -66,8 +71,8 @@ export default function HomePage() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -84,11 +89,11 @@ export default function HomePage() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.title}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {page.title}
               </Button>
             ))}
           </Box>
