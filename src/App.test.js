@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+const { it, expect } = require("@jest/globals");
+const { Character } = require("./functions/characters");
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("Character", function () {
+  test("the charactertest has a name property", function () {
+    const charactertest = new Character("Djara");
+    const expectedOutput = "Djara";
+    const actualOutput = charactertest.name;
+    expect(actualOutput).toEqual(expectedOutput);
+  });
 });
