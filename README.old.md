@@ -55,3 +55,9 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 ## Campaign/session notes
 
 - [] add more to compaign notes section
+
+## Design
+
+dribble website for design ideas
+material.io
+Neumorphism.io
