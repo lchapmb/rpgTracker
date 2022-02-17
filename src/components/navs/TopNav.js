@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -72,7 +74,11 @@ export default function HomePage() {
             >
               {pages.map((page) => (
                 <MenuItem key={page.title} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.title}</Typography>
+                  <Typography textAlign="center">
+                    <Link className="navLink" to={page.path}>
+                      {page.title}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -93,7 +99,9 @@ export default function HomePage() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page.title}
+                <Link className="navLink" to={page.path}>
+                  {page.title}
+                </Link>
               </Button>
             ))}
           </Box>

@@ -16,6 +16,11 @@ App {
   background: var(--main-header-color);
 }
 
+.navLink {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Homepage */
 
 .homeContainer {
