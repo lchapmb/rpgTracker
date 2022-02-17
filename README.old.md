@@ -61,3 +61,4 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 dribble website for design ideas
 material.io
 Neumorphism.io
+https://xmind.works/#/1fcb11 - mind map
