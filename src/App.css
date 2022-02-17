@@ -1,3 +1,25 @@
+:root {
+  --main-header-color: #053225;
+  --background-color: #fffbfe;
+  --outline-color: #6d4c3d;
+  --highlight-color: #ed7d3a;
+  --accent-color: #a6a867;
+}
+
+App {
+  background: var(--background-color) r;
+}
+
+/* Navbar */
+
 .topNavAppBar {
-  background: green;
+  background: var(--main-header-color);
+}
+
+/* Homepage */
+
+.homeContainer {
+  margin-top: 5vh;
+  border: 5px solid var(--outline-color);
+  background-color: var(--accent-color);
 }
