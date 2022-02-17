@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { SetStateAction, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Typography from "@mui/material/Typography";
@@ -11,7 +11,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 
-import { UserContext } from "../../App";
+import { useGlobalContext } from "../../views/App";
 
 // const pages = [
 //   "Create Player",
@@ -28,16 +28,12 @@ const pages = [
 ];
 
 export default function HomePage() {
-  const { userName } = useContext(UserContext);
-  const [anchorElNav, setAnchorElNav] = useState(null);
+  const { userName } = useGlobalContext();
+  const [anchorElNavOpen, setAnchorElNavOpen] = useState<boolean>(false);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  function toggleNavBar() {
+    setAnchorElNavOpen(!anchorElNavOpen);
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -59,21 +55,19 @@ export default function HomePage() {
               color="inherit"
               aria-label="menu-appbar"
               sx={{ mr: 2 }}
-              onClick={handleOpenNavMenu}
+              onClick={toggleNavBar}
             >
               <MenuIcon />
             </IconButton>
             <Menu
+              open={anchorElNavOpen}
               id="menu-appbar"
-              anchorEl={anchorElNav}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.title}>
                   <Typography textAlign="center">
                     <Link className="navLink" to={page.path}>
                       {page.title}
@@ -96,7 +90,6 @@ export default function HomePage() {
             {pages.map((page) => (
               <Button
                 key={page.title}
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 <Link className="navLink" to={page.path}>
