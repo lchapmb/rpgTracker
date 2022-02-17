@@ -14,16 +14,16 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 
 ## design
 
-- [] homepage
-- [] want to make use of routes
+- [x] homepage
+- [x] want to make use of routes
 - [] create player form
 - [] edit player
 
 ## Players
 
-- [] have names
-- [] have health
-- [] have ac
+- [x] have names
+- [x] have health
+- [x] have ac
 - [] have iniative
 - [] have status
 - [] have death rolls

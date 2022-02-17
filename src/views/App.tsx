@@ -7,20 +7,14 @@ import "../css/App.css";
 import HomePage from "../components/HomePage";
 import CreatePlayer from "../components/CreatePlayer";
 
-type MyContextInterface = {
-  userName: string;
-  health: number;
-};
-
-export const UserContext = createContext<MyContextInterface>({
+export const UserContext = createContext({
   userName: "",
-  health: 0,
 });
 
 export const useGlobalContext = () => useContext(UserContext);
 
 function App() {
-  const [userName, setUsername] = useState<string>("GM");
+  const [userName] = useState<string>("GM");
 
   const routes = (
     <Routes>
@@ -32,7 +26,7 @@ function App() {
   return (
     <StyledEngineProvider injectFirst>
       <div className="App">
-        <UserContext.Provider value={{ userName, health: 0 }}>
+        <UserContext.Provider value={{ userName }}>
           {routes}
         </UserContext.Provider>
       </div>
