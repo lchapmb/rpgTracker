@@ -23,8 +23,8 @@ App {
 
 /* Homepage */
 
-.homeContainer {
-  margin-top: 5vh;
+.homeBox {
+  margin: 1vh;
   border: 5px solid var(--outline-color);
   background-color: var(--accent-color);
 }
