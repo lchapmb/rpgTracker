@@ -31,12 +31,7 @@ const pages = [
 
 export default function TopNav() {
   const { userName } = useGlobalContext();
-  // const [anchorElNavOpen, setAnchorElNavOpen] = useState<boolean>(false);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-
-  // function toggleNavBar() {
-  //   setAnchorElNavOpen(!anchorElNavOpen);
-  // }
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -67,14 +62,12 @@ export default function TopNav() {
               aria-label="menu-appbar"
               sx={{ mr: 2 }}
               onClick={handleOpenNavMenu}
-              // onClick={toggleNavBar}
             >
               <MenuIcon />
             </IconButton>
             <Menu
               anchorEl={anchorElNav}
               open={Boolean(anchorElNav)}
-              // open={anchorElNavOpen}
               onClose={handleCloseNavMenu}
               id="menu-appbar"
               sx={{
