@@ -24,7 +24,7 @@ export default function CreatePlayer() {
           </Typography>
         </Box>
         <Divider />
-        <Box sx={{ maxWidth: "100%" }}>
+        <Box sx={{ maxWidth: "100%", paddingBottom: 2 }}>
           <TextField
             id="input-with-icon-textfield"
             label="Name"
@@ -52,6 +52,7 @@ export default function CreatePlayer() {
               InputProps={{}}
               variant="standard"
             />
+            <br />
             <TextField
               id="input-with-icon-textfield"
               label="AC"
@@ -60,7 +61,6 @@ export default function CreatePlayer() {
               variant="standard"
             />
           </Box>
-          <Divider />
           <Button variant="contained">Create Creature</Button>
         </Box>
       </Container>
