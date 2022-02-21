@@ -1,17 +1,19 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
+import {
+  Typography,
+  Box,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Menu,
+  MenuItem,
+  Button,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Button from "@mui/material/Button";
 
-import { UserContext } from "../../App";
+import { useGlobalContext } from "../../views/App";
 
 // const pages = [
 //   "Create Player",
@@ -25,13 +27,14 @@ import { UserContext } from "../../App";
 const pages = [
   { title: "Home", path: "/" },
   { title: "Create Player", path: "/create-player" },
+  { title: "Creature List", path: "/creature-list" },
 ];
 
-export default function HomePage() {
-  const { userName } = useContext(UserContext);
-  const [anchorElNav, setAnchorElNav] = useState(null);
+export default function TopNav() {
+  const { userName } = useGlobalContext();
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
-  const handleOpenNavMenu = (event) => {
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
 
@@ -64,16 +67,16 @@ export default function HomePage() {
               <MenuIcon />
             </IconButton>
             <Menu
-              id="menu-appbar"
               anchorEl={anchorElNav}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
+              id="menu-appbar"
               sx={{
                 display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.title}>
                   <Typography textAlign="center">
                     <Link className="navLink" to={page.path}>
                       {page.title}
@@ -96,7 +99,6 @@ export default function HomePage() {
             {pages.map((page) => (
               <Button
                 key={page.title}
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 <Link className="navLink" to={page.path}>
