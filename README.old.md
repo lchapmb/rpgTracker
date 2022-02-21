@@ -27,8 +27,12 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - [] have iniative
 - [] have status
 - [] have death rolls
-- [] have advantage
+- [] have advantage/disadvantage
 - [] have luck
+- [] have passive perception
+- [] have languages
+- [] have passive investigation
+- [] have inspiration
 
 ## NPCs
 
@@ -38,8 +42,11 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - [] have iniative
 - [] have status
 - [] have death rolls
-- [] have advantage
+- [] have advantage/disadvantage
 - [] have luck
+- [] have passive perception
+- [] have languages
+- [] have passive investigation
 
 ## Combat
 
