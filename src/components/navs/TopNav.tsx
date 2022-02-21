@@ -27,6 +27,7 @@ import { useGlobalContext } from "../../views/App";
 const pages = [
   { title: "Home", path: "/" },
   { title: "Create Player", path: "/create-player" },
+  { title: "Creature List", path: "/creature-list" },
 ];
 
 export default function TopNav() {
