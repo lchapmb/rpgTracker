@@ -15,4 +15,11 @@ describe("CharacterModel", function () {
     const character = new CharacterModel("Theo", 100, 10);
     expect(character.health).toBe(100);
   });
+
+  test("testing to see if character gets id correctly", () => {
+    const character = new CharacterModel("Theo", 100, 10);
+    expect(typeof character.id).toBe("number");
+    expect(character.id).toBeLessThan(100);
+    expect(character.id).toBeGreaterThan(0);
+  });
 });

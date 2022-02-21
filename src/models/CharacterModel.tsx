@@ -7,7 +7,7 @@ export default class Character implements CreatureInterface {
   armor: number;
 
   constructor(name: string, health: number, armor: number) {
-    this.id = Math.random();
+    this.id = Math.floor(Math.random() * 99);
     this.name = name;
     this.health = health;
     this.armor = armor;
