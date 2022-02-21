@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
+import {
+  Typography,
+  Box,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Menu,
+  MenuItem,
+  Button,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Button from "@mui/material/Button";
 
 import { useGlobalContext } from "../../views/App";
 
@@ -27,13 +29,22 @@ const pages = [
   { title: "Create Player", path: "/create-player" },
 ];
 
-export default function HomePage() {
+export default function TopNav() {
   const { userName } = useGlobalContext();
-  const [anchorElNavOpen, setAnchorElNavOpen] = useState<boolean>(false);
+  // const [anchorElNavOpen, setAnchorElNavOpen] = useState<boolean>(false);
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
-  function toggleNavBar() {
-    setAnchorElNavOpen(!anchorElNavOpen);
-  }
+  // function toggleNavBar() {
+  //   setAnchorElNavOpen(!anchorElNavOpen);
+  // }
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -55,12 +66,16 @@ export default function HomePage() {
               color="inherit"
               aria-label="menu-appbar"
               sx={{ mr: 2 }}
-              onClick={toggleNavBar}
+              onClick={handleOpenNavMenu}
+              // onClick={toggleNavBar}
             >
               <MenuIcon />
             </IconButton>
             <Menu
-              open={anchorElNavOpen}
+              anchorEl={anchorElNav}
+              open={Boolean(anchorElNav)}
+              // open={anchorElNavOpen}
+              onClose={handleCloseNavMenu}
               id="menu-appbar"
               sx={{
                 display: { xs: "block", md: "none" },
