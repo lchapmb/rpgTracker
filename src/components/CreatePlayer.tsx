@@ -20,13 +20,14 @@ export default function CreatePlayer() {
       <Container className="homeContainer" maxWidth="lg">
         <Box className="homeBox" sx={{ height: "auto" }}>
           <Typography variant="h3" component="div" gutterBottom align="center">
-            Create Player
+            Create Creature
           </Typography>
         </Box>
         <Divider />
         <Box sx={{ maxWidth: "100%", paddingBottom: 2 }}>
+          {/* name field */}
           <TextField
-            id="input-with-icon-textfield"
+            id="creatureNameInputField"
             label="Name"
             placeholder="Name"
             fullWidth
@@ -45,23 +46,28 @@ export default function CreatePlayer() {
               paddingBottom: 2,
             }}
           >
+            {/* health */}
             <TextField
-              id="input-with-icon-textfield"
+              id="healthInputField"
               label="HP"
               placeholder="HP"
               InputProps={{}}
               variant="standard"
             />
             <br />
+            {/* armour class */}
             <TextField
-              id="input-with-icon-textfield"
+              id="armourClassInputField"
               label="AC"
               placeholder="AC"
               InputProps={{}}
               variant="standard"
             />
           </Box>
-          <Button variant="contained">Create Creature</Button>
+          {/* submit button */}
+          <Button id="creatureCreationSubmit" variant="contained">
+            Create Creature
+          </Button>
         </Box>
       </Container>
     </>
