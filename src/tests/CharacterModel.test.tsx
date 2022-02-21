@@ -11,9 +11,9 @@ describe("CharacterModel", function () {
     expect(character.health).toBe(100);
   });
 
-  test("testing to see if character gets armor correctly", () => {
+  test("testing to see if character gets armour correctly", () => {
     const character = new CharacterModel("Theo", 100, 10);
-    expect(character.health).toBe(100);
+    expect(character.armour).toBe(10);
   });
 
   test("testing to see if character gets id correctly", () => {
