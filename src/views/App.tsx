@@ -6,6 +6,7 @@ import "../css/App.css";
 
 import HomePage from "../components/HomePage";
 import CreatePlayer from "../components/CreatePlayer";
+import CreatureList from "../components/CreatureList";
 
 export const UserContext = createContext({
   userName: "",
@@ -20,6 +21,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/create-player" element={<CreatePlayer />} />
+      <Route path="/creature-list" element={<CreatureList />} />
     </Routes>
   );
 
