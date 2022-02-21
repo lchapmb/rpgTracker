@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import TopNav from "./navs/TopNav";
 
 import {
@@ -12,6 +14,8 @@ import {
 import AccountCircle from "@mui/icons-material/AccountCircle";
 
 export default function CreatePlayer() {
+  const [nameString, setNameString] = useState("");
+
   return (
     <>
       <TopNav />
@@ -37,6 +41,11 @@ export default function CreatePlayer() {
               ),
             }}
             variant="standard"
+            onChange={(e) => {
+              setNameString(e.target.value);
+              console.log(nameString);
+            }}
+            value={nameString}
           />
           <Box
             sx={{
