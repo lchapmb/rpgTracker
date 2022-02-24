@@ -10,11 +10,16 @@ import {
   TextField,
   InputAdornment,
   Button,
+  MenuItem,
+  InputLabel,
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 export default function CreatePlayer() {
   const [nameString, setNameString] = useState("");
+  const [healthString, setHealthString] = useState("");
+  const [amourString, setArmourString] = useState("");
 
   return (
     <>
@@ -54,22 +59,34 @@ export default function CreatePlayer() {
             }}
           >
             {/* health */}
+            <InputLabel id="health">Health</InputLabel>
             <TextField
               id="healthInputField"
-              label="HP"
               placeholder="HP"
-              InputProps={{}}
               variant="standard"
+              inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+              onChange={(e) => {
+                setHealthString(e.target.value);
+                console.log(healthString);
+              }}
+              value={healthString}
             />
             <br />
             {/* armour class */}
-            <TextField
+            <InputLabel id="armourClass">AC</InputLabel>
+            <Select
               id="armourClassInputField"
-              label="AC"
               placeholder="AC"
-              InputProps={{}}
               variant="standard"
-            />
+              onChange={(e) => {
+                setArmourString(e.target.value);
+                console.log(amourString);
+              }}
+              value={amourString}
+            >
+              <MenuItem value={1}>1</MenuItem>;<MenuItem value={2}>2</MenuItem>;
+              <MenuItem value={3}>3</MenuItem>;<MenuItem value={4}>4</MenuItem>;
+            </Select>
           </Box>
           {/* submit button */}
           <Button id="creatureCreationSubmit" variant="contained">
