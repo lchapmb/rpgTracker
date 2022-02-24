@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import TopNav from "./navs/TopNav";
+import MenuItemNumbers from "./MenuItemNumbers";
 
 import {
   Typography,
@@ -15,6 +16,7 @@ import {
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import menuItemNumbers from "./MenuItemNumbers";
 
 export default function CreatePlayer() {
   const [nameString, setNameString] = useState("");
@@ -84,8 +86,7 @@ export default function CreatePlayer() {
               }}
               value={amourString}
             >
-              <MenuItem value={1}>1</MenuItem>;<MenuItem value={2}>2</MenuItem>;
-              <MenuItem value={3}>3</MenuItem>;<MenuItem value={4}>4</MenuItem>;
+              <MenuItemNumbers />
             </Select>
           </Box>
           {/* submit button */}
