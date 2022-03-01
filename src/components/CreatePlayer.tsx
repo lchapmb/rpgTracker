@@ -1,7 +1,7 @@
+import { useState } from "react";
+
 import TopNav from "./navs/TopNav";
 
-// import Box from "@mui/material/Box";
-// import Container from "@mui/material/Container";
 import {
   Typography,
   Box,
@@ -14,6 +14,14 @@ import {
 import AccountCircle from "@mui/icons-material/AccountCircle";
 
 export default function CreatePlayer() {
+  const [creatureName] = useState<string>("");
+  // const [creatureHealth] = useState<string>("");
+  // const [creatureArmour] = useState<string>("");
+
+  const createCreatureSubmit = () => {
+    console.log("ror innit");
+  };
+
   return (
     <>
       <TopNav />
@@ -39,6 +47,7 @@ export default function CreatePlayer() {
               ),
             }}
             variant="standard"
+            value={creatureName}
           />
           <Box
             sx={{
@@ -65,7 +74,13 @@ export default function CreatePlayer() {
             />
           </Box>
           {/* submit button */}
-          <Button id="creatureCreationSubmit" variant="contained">
+          <Button
+            id="creatureCreationSubmit"
+            variant="contained"
+            onClick={() => {
+              createCreatureSubmit();
+            }}
+          >
             Create Creature
           </Button>
         </Box>
