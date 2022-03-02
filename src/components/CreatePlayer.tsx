@@ -12,6 +12,7 @@ import {
   Button,
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 export default function CreatePlayer() {
   const [creatureName] = useState<string>("");
