@@ -1,7 +1,6 @@
-import { useState } from "react";
-
 // import components
 import TopNav from "./navs/TopNav";
+import MenuItemNumbers from "./MenuItemNumbers";
 
 // import hooks
 import UseForm from "../hooks/UseForm";
@@ -14,7 +13,6 @@ import {
   TextField,
   InputAdornment,
   Button,
-  MenuItem,
   InputLabel,
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -22,10 +20,10 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 export default function CreatePlayer() {
   // define inital state
-  const initialState = { nameString: "", healthString: "", armourString: "" };
+  const initialState = { nameString: "", healthString: "", armourString: 0 };
 
   // get event handlers from UseForm hook
-  const { onChange, onSubmit, values } = UseForm(
+  const { onInputChange, onSubmit, values } = UseForm(
     CreatePlayerCallback,
     initialState
   );
@@ -60,7 +58,7 @@ export default function CreatePlayer() {
               ),
             }}
             variant="standard"
-            onChange={onChange}
+            onChange={onInputChange}
             name="nameString"
           />
           <Box
@@ -71,24 +69,27 @@ export default function CreatePlayer() {
           >
             {/* health */}
             <InputLabel id="health">Health</InputLabel>
-            <TextField
+            <Select
               id="healthInputField"
-              placeholder="HP"
+              labelId="health"
               variant="standard"
-              inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
-              onChange={onChange}
               name="healthString"
-            />
+              defaultValue=""
+            >
+              <MenuItemNumbers maxValue={200} />
+            </Select>
             <br />
             {/* armour class */}
             <InputLabel id="armourClass">AC</InputLabel>
-            <TextField
+            <Select
               id="armourClassInputField"
-              placeholder="AC"
+              labelId="armourClass"
               variant="standard"
-              onChange={onChange}
               name="amourString"
-            />
+              defaultValue=""
+            >
+              <MenuItemNumbers maxValue={20} />
+            </Select>
           </Box>
           {/* submit button */}
           <Button

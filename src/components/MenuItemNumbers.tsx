@@ -1,7 +1,7 @@
 import { MenuItem } from "@mui/material";
 
-export default function menuItemNumbers() {
-  const topEndRange = 20;
+export default function menuItemNumbers(props: { maxValue: number }) {
+  const topEndRange = props.maxValue;
   let range: number[] = [];
   const createRange = function (max: number) {
     for (let i = 0; i <= max; i++) {
@@ -12,8 +12,12 @@ export default function menuItemNumbers() {
 
   return (
     <>
-      {range.map((val) => {
-        <MenuItem value={val}>{val}</MenuItem>;
+      {range.map((num) => {
+        return (
+          <MenuItem key={num} value={num}>
+            {num}
+          </MenuItem>
+        );
       })}
     </>
   );
