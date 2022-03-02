@@ -14,16 +14,17 @@ import {
   InputAdornment,
   Button,
   InputLabel,
+  MenuItem,
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 
 export default function CreatePlayer() {
   // define inital state
-  const initialState = { nameString: "", healthString: "", armourString: 0 };
+  const initialState = { nameString: "", healthString: 0, armourString: 0 };
 
   // get event handlers from UseForm hook
-  const { onInputChange, onSubmit, values } = UseForm(
+  const { onInputChange, onSelectChange, onSubmit, values } = UseForm(
     CreatePlayerCallback,
     initialState
   );
@@ -73,8 +74,8 @@ export default function CreatePlayer() {
               id="healthInputField"
               labelId="health"
               variant="standard"
+              // onChange={onSelectChange}
               name="healthString"
-              defaultValue=""
             >
               <MenuItemNumbers maxValue={200} />
             </Select>
@@ -85,9 +86,11 @@ export default function CreatePlayer() {
               id="armourClassInputField"
               labelId="armourClass"
               variant="standard"
-              name="amourString"
-              defaultValue=""
+              onChange={onSelectChange}
+              name="armourString"
+              value={initialState.armourString.toString()}
             >
+              {/* <MenuItem value={20}>20</MenuItem> */}
               <MenuItemNumbers maxValue={20} />
             </Select>
           </Box>
