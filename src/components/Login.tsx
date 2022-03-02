@@ -10,7 +10,7 @@ function Login() {
   };
 
   // getting the event handlers from our custom hook
-  const { onChange, onSubmit, values } = UseForm(
+  const { onInputChange, onSubmit, values } = UseForm(
     loginUserCallback,
     initialState
   );
@@ -29,7 +29,7 @@ function Login() {
           id="email"
           type="email"
           placeholder="Email"
-          onChange={onChange}
+          onChange={onInputChange}
           required
         />
 
@@ -38,7 +38,7 @@ function Login() {
           id="password"
           type="password"
           placeholder="Password"
-          onChange={onChange}
+          onChange={onInputChange}
           required
         />
         <button type="submit" onClick={onSubmit}>
