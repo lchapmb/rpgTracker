@@ -1,7 +1,10 @@
 import { useState } from "react";
 
+// import components
 import TopNav from "./navs/TopNav";
-import MenuItemNumbers from "./MenuItemNumbers";
+
+// import hooks
+import UseForm from "../hooks/UseForm";
 
 import {
   Typography,
@@ -16,12 +19,21 @@ import {
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import menuItemNumbers from "./MenuItemNumbers";
 
 export default function CreatePlayer() {
-  const [nameString, setNameString] = useState("");
-  const [healthString, setHealthString] = useState("");
-  const [amourString, setArmourString] = useState("");
+  // define inital state
+  const initialState = { nameString: "", healthString: "", armourString: "" };
+
+  // get event handlers from UseForm hook
+  const { onChange, onSubmit, values } = UseForm(
+    CreatePlayerCallback,
+    initialState
+  );
+
+  async function CreatePlayerCallback() {
+    // send 'values' to database
+    console.log("Submit", values);
+  }
 
   return (
     <>
@@ -48,11 +60,8 @@ export default function CreatePlayer() {
               ),
             }}
             variant="standard"
-            onChange={(e) => {
-              setNameString(e.target.value);
-              console.log(nameString);
-            }}
-            value={nameString}
+            onChange={onChange}
+            name="nameString"
           />
           <Box
             sx={{
@@ -67,30 +76,26 @@ export default function CreatePlayer() {
               placeholder="HP"
               variant="standard"
               inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
-              onChange={(e) => {
-                setHealthString(e.target.value);
-                console.log(healthString);
-              }}
-              value={healthString}
+              onChange={onChange}
+              name="healthString"
             />
             <br />
             {/* armour class */}
             <InputLabel id="armourClass">AC</InputLabel>
-            <Select
+            <TextField
               id="armourClassInputField"
               placeholder="AC"
               variant="standard"
-              onChange={(e) => {
-                setArmourString(e.target.value);
-                console.log(amourString);
-              }}
-              value={amourString}
-            >
-              <MenuItemNumbers />
-            </Select>
+              onChange={onChange}
+              name="amourString"
+            />
           </Box>
           {/* submit button */}
-          <Button id="creatureCreationSubmit" variant="contained">
+          <Button
+            id="creatureCreationSubmit"
+            variant="contained"
+            onClick={onSubmit}
+          >
             Create Creature
           </Button>
         </Box>
