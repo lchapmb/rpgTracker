@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import UseForm from "../hooks/UseForm";
+import UseForm from "../../hooks/UseForm";
 
 function Login() {
   // defining the initial state for the form
