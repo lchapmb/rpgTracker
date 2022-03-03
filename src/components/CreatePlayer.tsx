@@ -24,7 +24,7 @@ export default function CreatePlayer() {
   const initialState = { nameString: "", healthString: 0, armourString: 0 };
 
   // get event handlers from UseForm hook
-  const { onInputChange, onSelectChange, onSubmit, values } = UseForm(
+  const { onInputChange, onSubmit, values } = UseForm(
     CreatePlayerCallback,
     initialState
   );
@@ -69,30 +69,23 @@ export default function CreatePlayer() {
             }}
           >
             {/* health */}
-            <InputLabel id="health">Health</InputLabel>
-            <Select
+            <TextField
               id="healthInputField"
-              labelId="health"
+              label="HP"
               variant="standard"
-              // onChange={onSelectChange}
+              onChange={onInputChange}
               name="healthString"
-            >
-              <MenuItemNumbers maxValue={200} />
-            </Select>
+            />
+
             <br />
             {/* armour class */}
-            <InputLabel id="armourClass">AC</InputLabel>
-            <Select
+            <TextField
               id="armourClassInputField"
-              labelId="armourClass"
+              label="AC"
               variant="standard"
-              onChange={onSelectChange}
+              onChange={onInputChange}
               name="armourString"
-              value={initialState.armourString.toString()}
-            >
-              {/* <MenuItem value={20}>20</MenuItem> */}
-              <MenuItemNumbers maxValue={20} />
-            </Select>
+            />
           </Box>
           {/* submit button */}
           <Button
