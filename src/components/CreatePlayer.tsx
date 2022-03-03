@@ -76,7 +76,6 @@ export default function CreatePlayer() {
               onChange={onInputChange}
               name="healthString"
             />
-
             <br />
             {/* armour class */}
             <TextField
