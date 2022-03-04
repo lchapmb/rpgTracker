@@ -1,9 +1,12 @@
+import React from "react";
+
 // import components
 import TopNav from "./navs/TopNav";
-import MenuItemNumbers from "./MenuItemNumbers";
 
 // import hooks
 import UseForm from "../hooks/UseForm";
+
+// MUI imports
 
 import {
   Typography,
@@ -13,15 +16,21 @@ import {
   TextField,
   InputAdornment,
   Button,
-  InputLabel,
-  MenuItem,
+  FormHelperText,
 } from "@mui/material";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import Select from "@mui/material/Select";
+import { AccountCircle } from "@mui/icons-material";
+import FormControl, { useFormControl } from "@mui/material/FormControl";
 
 export default function CreatePlayer() {
   // define inital state
-  const initialState = { nameString: "", healthString: 0, armourString: 0 };
+  const initialState = {
+    nameString: "",
+    nameValid: false,
+    healthInt: 0,
+    healthValid: false,
+    armourInt: 0,
+    armourValid: false,
+  };
 
   // get event handlers from UseForm hook
   const { onInputChange, onSubmit, values } = UseForm(
@@ -34,6 +43,20 @@ export default function CreatePlayer() {
     console.log("Submit", values);
   }
 
+  function MyFormHelperText() {
+    const { focused } = useFormControl() || {};
+
+    const helperText = React.useMemo(() => {
+      if (focused) {
+        return "This field is being focused";
+      }
+
+      return "Helper text";
+    }, [focused]);
+
+    return <FormHelperText>{helperText}</FormHelperText>;
+  }
+
   return (
     <>
       <TopNav />
@@ -44,24 +67,31 @@ export default function CreatePlayer() {
           </Typography>
         </Box>
         <Divider />
-        <Box sx={{ maxWidth: "100%", paddingBottom: 2 }}>
-          {/* name field */}
-          <TextField
-            id="creatureNameInputField"
-            label="Name"
-            placeholder="Name"
-            fullWidth
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
-            variant="standard"
-            onChange={onInputChange}
-            name="nameString"
-          />
+        <Box
+          sx={{ maxWidth: "100%", paddingBottom: 2 }}
+          component="form"
+          noValidate
+        >
+          <FormControl sx={{ width: "25ch" }}>
+            {/* name field */}
+            <TextField
+              id="creatureNameInputField"
+              label="Name"
+              placeholder="Name"
+              fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+              variant="standard"
+              onChange={onInputChange}
+              name="nameString"
+            />
+            <MyFormHelperText />
+          </FormControl>
           <Box
             sx={{
               maxWidth: "100%",
@@ -74,7 +104,7 @@ export default function CreatePlayer() {
               label="HP"
               variant="standard"
               onChange={onInputChange}
-              name="healthString"
+              name="healthInt"
             />
             <br />
             {/* armour class */}
@@ -83,7 +113,7 @@ export default function CreatePlayer() {
               label="AC"
               variant="standard"
               onChange={onInputChange}
-              name="armourString"
+              name="armourInt"
             />
           </Box>
           {/* submit button */}
