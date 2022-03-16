@@ -19,7 +19,6 @@ import {
   FormHelperText,
 } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
-import FormControl, { useFormControl } from "@mui/material/FormControl";
 
 export default function CreatePlayer() {
   // define inital state
@@ -43,20 +42,6 @@ export default function CreatePlayer() {
     console.log("Submit", values);
   }
 
-  function MyFormHelperText() {
-    const { focused } = useFormControl() || {};
-
-    const helperText = React.useMemo(() => {
-      if (focused) {
-        return "This field is being focused";
-      }
-
-      return "Helper text";
-    }, [focused]);
-
-    return <FormHelperText>{helperText}</FormHelperText>;
-  }
-
   return (
     <>
       <TopNav />
@@ -68,30 +53,28 @@ export default function CreatePlayer() {
         </Box>
         <Divider />
         <Box
-          sx={{ maxWidth: "100%", paddingBottom: 2 }}
+          sx={{ maxWidth: "25ch", paddingBottom: 2 }}
           component="form"
           noValidate
         >
-          <FormControl sx={{ width: "25ch" }}>
-            {/* name field */}
-            <TextField
-              id="creatureNameInputField"
-              label="Name"
-              placeholder="Name"
-              fullWidth
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <AccountCircle />
-                  </InputAdornment>
-                ),
-              }}
-              variant="standard"
-              onChange={onInputChange}
-              name="nameString"
-            />
-            <MyFormHelperText />
-          </FormControl>
+          {/* name field */}
+          <TextField
+            id="creatureNameInputField"
+            label="Name"
+            placeholder="Name"
+            fullWidth
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircle />
+                </InputAdornment>
+              ),
+            }}
+            variant="standard"
+            onChange={onInputChange}
+            name="nameString"
+            required
+          />
           <Box
             sx={{
               maxWidth: "100%",
@@ -105,6 +88,7 @@ export default function CreatePlayer() {
               variant="standard"
               onChange={onInputChange}
               name="healthInt"
+              required
             />
             <br />
             {/* armour class */}
@@ -114,6 +98,7 @@ export default function CreatePlayer() {
               variant="standard"
               onChange={onInputChange}
               name="armourInt"
+              required
             />
           </Box>
           {/* submit button */}
