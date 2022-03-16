@@ -32,13 +32,20 @@ export default function CreatePlayer() {
 
   // get event handlers from UseForm hook
   const { onInputChange, onSubmit, values } = UseForm(
+    initialState,
     CreatePlayerCallback,
-    initialState
+    FormChangeCallback
   );
 
   async function CreatePlayerCallback() {
     // send 'values' to database
-    console.log("Submit", values);
+    console.log("Values", values);
+  }
+
+  async function FormChangeCallback(
+    event: React.ChangeEvent<HTMLInputElement>
+  ) {
+    console.log("Form change", event.target.name, event.target.value);
   }
 
   return (
