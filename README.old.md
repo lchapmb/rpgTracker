@@ -73,3 +73,4 @@ https://xmind.works/#/1fcb11 - mind map
 ## React/Typescript
 
 https://react-typescript-cheatsheet.netlify.app/
+socket.io and https://www.npmjs.com/package/react-qr-code QR code generator to allow players to add their own
