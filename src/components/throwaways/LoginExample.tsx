@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import UseForm from "../../hooks/UseForm";
+// import UseForm from "../../hooks/UseForm";
 
 function Login() {
   // defining the initial state for the form
@@ -10,10 +10,10 @@ function Login() {
   };
 
   // getting the event handlers from our custom hook
-  const { onInputChange, onSubmit, values } = UseForm(
-    loginUserCallback,
-    initialState
-  );
+  //   const { onInputChange, onSubmit, values } = UseForm(
+  //     loginUserCallback,
+  //     initialState
+  //   );
 
   // a submit function that will execute upon form submission
   async function loginUserCallback() {
@@ -29,7 +29,7 @@ function Login() {
           id="email"
           type="email"
           placeholder="Email"
-          onChange={onInputChange}
+          //   onChange={onInputChange}
           required
         />
 
@@ -38,12 +38,10 @@ function Login() {
           id="password"
           type="password"
           placeholder="Password"
-          onChange={onInputChange}
+          //   onChange={onInputChange}
           required
         />
-        <button type="submit" onClick={onSubmit}>
-          Login
-        </button>
+        <button type="submit" /*onClick={onSubmit}*/>Login</button>
       </div>
     </form>
   );
