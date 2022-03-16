@@ -16,7 +16,6 @@ import {
   TextField,
   InputAdornment,
   Button,
-  FormHelperText,
 } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
 
@@ -88,7 +87,7 @@ export default function CreatePlayer() {
               variant="standard"
               onChange={onInputChange}
               name="healthInt"
-              required
+              type="text"
             />
             <br />
             {/* armour class */}
@@ -98,7 +97,6 @@ export default function CreatePlayer() {
               variant="standard"
               onChange={onInputChange}
               name="armourInt"
-              required
             />
           </Box>
           {/* submit button */}
