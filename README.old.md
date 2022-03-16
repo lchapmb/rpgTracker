@@ -69,3 +69,7 @@ dribble website for design ideas
 material.io
 Neumorphism.io
 https://xmind.works/#/1fcb11 - mind map
+
+## React/Typescript
+
+https://react-typescript-cheatsheet.netlify.app/
