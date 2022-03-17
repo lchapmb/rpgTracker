@@ -1,7 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
+// import components
 import TopNav from "./navs/TopNav";
 
+// MUI imports
 import {
   Typography,
   Box,
@@ -11,17 +13,34 @@ import {
   InputAdornment,
   Button,
 } from "@mui/material";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+
+import { AccountCircle } from "@mui/icons-material";
 
 export default function CreatePlayer() {
-  const [creatureName] = useState<string>("");
-  // const [creatureHealth] = useState<string>("");
-  // const [creatureArmour] = useState<string>("");
-
-  const createCreatureSubmit = () => {
-    console.log("ror innit");
+  // define inital state
+  const initialState = {
+    nameString: "",
+    nameValid: false,
+    healthInt: 0,
+    healthValid: false,
+    armourInt: 0,
+    armourValid: false,
   };
+
+  const [values, setValues] = useState(initialState);
+
+  async function CreatePlayerSubmit(event: React.MouseEvent) {
+    event.preventDefault();
+    // send 'values' to database
+    console.log("Values", values);
+  }
+
+  async function CreatePlayerChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ) {
+    setValues({ ...values, [event.target.name]: event.target.value });
+    console.log(event.target.name, event.target.value);
+  }
 
   return (
     <>
@@ -33,7 +52,11 @@ export default function CreatePlayer() {
           </Typography>
         </Box>
         <Divider />
-        <Box sx={{ maxWidth: "100%", paddingBottom: 2 }}>
+        <Box
+          sx={{ maxWidth: "25ch", paddingBottom: 2 }}
+          component="form"
+          noValidate
+        >
           {/* name field */}
           <TextField
             id="creatureNameInputField"
@@ -48,7 +71,9 @@ export default function CreatePlayer() {
               ),
             }}
             variant="standard"
-            value={creatureName}
+            onChange={CreatePlayerChange}
+            name="nameString"
+            required
           />
           <Box
             sx={{
@@ -60,27 +85,26 @@ export default function CreatePlayer() {
             <TextField
               id="healthInputField"
               label="HP"
-              placeholder="HP"
-              InputProps={{}}
               variant="standard"
+              onChange={CreatePlayerChange}
+              name="healthInt"
+              type="text"
             />
             <br />
             {/* armour class */}
             <TextField
               id="armourClassInputField"
               label="AC"
-              placeholder="AC"
-              InputProps={{}}
               variant="standard"
+              onChange={CreatePlayerChange}
+              name="armourInt"
             />
           </Box>
           {/* submit button */}
           <Button
             id="creatureCreationSubmit"
             variant="contained"
-            onClick={() => {
-              createCreatureSubmit();
-            }}
+            onClick={CreatePlayerSubmit}
           >
             Create Creature
           </Button>
