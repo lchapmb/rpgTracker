@@ -28,7 +28,7 @@ export const UserContext = createContext<UserContent>({
   userName: "",
 });
 export const CreaturesContext = createContext<CreatureContent>({
-  creaturesArr: [{ id: 0, name: "Add character here", health: 0, armour: 0 }],
+  creaturesArr: [{ id: 0, name: "", health: 0, armour: 0 }],
   setCreaturesArr: () => {},
 });
 
@@ -38,9 +38,9 @@ export const useCreaturesContext = () => useContext(CreaturesContext);
 
 function App() {
   const [userName] = useState<string>("GM");
-  const [creaturesArr, setCreaturesArr] = useState<Array<CreatureInterface>>([
-    { id: 0, name: "", health: 0, armour: 0 },
-  ]);
+  const [creaturesArr, setCreaturesArr] = useState<Array<CreatureInterface>>(
+    []
+  );
 
   const routes = (
     <Routes>
