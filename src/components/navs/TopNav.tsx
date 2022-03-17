@@ -27,7 +27,7 @@ import { useUserContext } from "../../views/App";
 const pages = [
   { title: "Home", path: "/" },
   { title: "Create Player", path: "/create-player" },
-  { title: "Creature List", path: "/creature-list" },
+  { title: "Creatures", path: "/creatures-page" },
 ];
 
 export default function TopNav() {
