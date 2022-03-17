@@ -67,6 +67,9 @@ export default function CreaturesPage() {
             </Grid>
           ))}
         </Grid>
+        {/* <Typography variant="h5" component="div" gutterBottom align="center">
+          No creatures found
+        </Typography> */}
       </Container>
       <Container className="creatureListContainer" maxWidth="lg">
         <Stack spacing={2} direction="row">
