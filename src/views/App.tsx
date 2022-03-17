@@ -32,6 +32,7 @@ export const CreaturesContext = createContext<CreatureContent>({
   setCreaturesArr: () => {},
 });
 
+// exports use contexts
 export const useUserContext = () => useContext(UserContext);
 export const useCreaturesContext = () => useContext(CreaturesContext);
 
