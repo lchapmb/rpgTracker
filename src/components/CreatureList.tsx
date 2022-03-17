@@ -69,7 +69,7 @@ export default function CreatureList() {
         </Grid>
         <Stack spacing={2} direction="row">
           <Button variant="contained" onClick={testClick}>
-            Contained
+            Generate Party
           </Button>
         </Stack>
       </Container>
