@@ -42,7 +42,6 @@ export default function CreatePlayer() {
     const { nameString, healthInt, armourInt } = values;
     // create character with values
     const character = new CharacterModel(nameString, healthInt, armourInt);
-    console.log(character);
     // send 'values' to context
     setCreaturesArr([...creaturesArr, character]);
     // reset values
@@ -53,7 +52,6 @@ export default function CreatePlayer() {
     event: React.ChangeEvent<HTMLInputElement>
   ) {
     setValues({ ...values, [event.target.name]: event.target.value });
-    console.log(event.target.name, event.target.value);
   }
 
   return (
@@ -104,7 +102,7 @@ export default function CreatePlayer() {
               onChange={CreatePlayerChange}
               name="healthInt"
               type="text"
-              // value={values.healthInt}
+              value={values.healthInt || ""}
             />
             <br />
             {/* armour class */}
@@ -114,7 +112,7 @@ export default function CreatePlayer() {
               variant="standard"
               onChange={CreatePlayerChange}
               name="armourInt"
-              // value={values.armourInt}
+              value={values.armourInt || ""}
             />
           </Box>
           {/* submit button */}
