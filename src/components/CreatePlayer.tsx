@@ -3,6 +3,9 @@ import React, { useState } from "react";
 // import components
 import TopNav from "./navs/TopNav";
 
+// import model
+import CharacterModel from "../models/CharacterModel";
+
 // MUI imports
 import {
   Typography,
@@ -13,10 +16,14 @@ import {
   InputAdornment,
   Button,
 } from "@mui/material";
-
 import { AccountCircle } from "@mui/icons-material";
 
+// import context
+import { useCreaturesContext } from "../views/App";
+
 export default function CreatePlayer() {
+  const { creaturesArr, setCreaturesArr } = useCreaturesContext();
+
   // define inital state
   const initialState = {
     nameString: "",
@@ -31,8 +38,15 @@ export default function CreatePlayer() {
 
   async function CreatePlayerSubmit(event: React.MouseEvent) {
     event.preventDefault();
-    // send 'values' to database
-    console.log("Values", values);
+    // deconstruct values
+    const { nameString, healthInt, armourInt } = values;
+    // create character with values
+    const character = new CharacterModel(nameString, healthInt, armourInt);
+    console.log(character);
+    // send 'values' to context
+    setCreaturesArr([...creaturesArr, character]);
+    // reset values
+    setValues(initialState);
   }
 
   async function CreatePlayerChange(
@@ -74,6 +88,7 @@ export default function CreatePlayer() {
             onChange={CreatePlayerChange}
             name="nameString"
             required
+            value={values.nameString}
           />
           <Box
             sx={{
@@ -89,6 +104,7 @@ export default function CreatePlayer() {
               onChange={CreatePlayerChange}
               name="healthInt"
               type="text"
+              // value={values.healthInt}
             />
             <br />
             {/* armour class */}
@@ -98,6 +114,7 @@ export default function CreatePlayer() {
               variant="standard"
               onChange={CreatePlayerChange}
               name="armourInt"
+              // value={values.armourInt}
             />
           </Box>
           {/* submit button */}

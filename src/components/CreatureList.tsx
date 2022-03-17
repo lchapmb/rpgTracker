@@ -1,14 +1,23 @@
+// import nav
 import TopNav from "./navs/TopNav";
 
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import Divider from "@mui/material/Divider";
-import CardContent from "@mui/material/CardContent";
-import Grid from "@mui/material/Grid";
+// imports from MUI
+import {
+  Box,
+  Container,
+  Typography,
+  Card,
+  Divider,
+  CardContent,
+  Grid,
+  Stack,
+  Button,
+} from "@mui/material";
 
-const creatures = [
+// import context
+import { useCreaturesContext } from "../views/App";
+
+const testCreatures = [
   { id: 7, name: "Djara", health: 62, armour: 16 },
   { id: 11, name: "Gavin", health: 102, armour: 18 },
   { id: 12, name: "Tonloy", health: 78, armour: 15 },
@@ -16,6 +25,11 @@ const creatures = [
 ];
 
 export default function CreatureList() {
+  const { creaturesArr, setCreaturesArr } = useCreaturesContext();
+  const testClick = async () => {
+    console.log("Test");
+    await setCreaturesArr(testCreatures);
+  };
   return (
     <>
       <TopNav />
@@ -34,7 +48,7 @@ export default function CreatureList() {
           className="creatureListGrid"
           maxWidth="lg"
         >
-          {creatures.map((creature) => (
+          {creaturesArr.map((creature) => (
             <Grid item xs={2} sm={4} md={4} key={creature.id}>
               <Card variant="outlined">
                 <CardContent>
@@ -53,6 +67,11 @@ export default function CreatureList() {
             </Grid>
           ))}
         </Grid>
+        <Stack spacing={2} direction="row">
+          <Button variant="contained" onClick={testClick}>
+            Generate Party
+          </Button>
+        </Stack>
       </Container>
     </>
   );
