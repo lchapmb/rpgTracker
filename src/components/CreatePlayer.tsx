@@ -16,10 +16,14 @@ import {
   InputAdornment,
   Button,
 } from "@mui/material";
-
 import { AccountCircle } from "@mui/icons-material";
 
+// import context
+import { useCreaturesContext } from "../views/App";
+
 export default function CreatePlayer() {
+  const { creaturesArr, setCreaturesArr } = useCreaturesContext();
+
   // define inital state
   const initialState = {
     nameString: "",
@@ -40,6 +44,9 @@ export default function CreatePlayer() {
     const character = new CharacterModel(nameString, healthInt, armourInt);
     console.log(character);
     // send 'values' to context
+    setCreaturesArr([...creaturesArr, character]);
+    // reset values
+    setValues(initialState);
   }
 
   async function CreatePlayerChange(
@@ -81,6 +88,7 @@ export default function CreatePlayer() {
             onChange={CreatePlayerChange}
             name="nameString"
             required
+            value={values.nameString}
           />
           <Box
             sx={{
@@ -96,6 +104,7 @@ export default function CreatePlayer() {
               onChange={CreatePlayerChange}
               name="healthInt"
               type="text"
+              // value={values.healthInt}
             />
             <br />
             {/* armour class */}
@@ -105,6 +114,7 @@ export default function CreatePlayer() {
               variant="standard"
               onChange={CreatePlayerChange}
               name="armourInt"
+              // value={values.armourInt}
             />
           </Box>
           {/* submit button */}
