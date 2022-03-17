@@ -3,6 +3,9 @@ import React, { useState } from "react";
 // import components
 import TopNav from "./navs/TopNav";
 
+// import model
+import CharacterModel from "../models/CharacterModel";
+
 // MUI imports
 import {
   Typography,
@@ -31,8 +34,12 @@ export default function CreatePlayer() {
 
   async function CreatePlayerSubmit(event: React.MouseEvent) {
     event.preventDefault();
-    // send 'values' to database
-    console.log("Values", values);
+    // deconstruct values
+    const { nameString, healthInt, armourInt } = values;
+    // create character with values
+    const character = new CharacterModel(nameString, healthInt, armourInt);
+    console.log(character);
+    // send 'values' to context
   }
 
   async function CreatePlayerChange(
