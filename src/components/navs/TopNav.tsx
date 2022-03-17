@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import { useGlobalContext } from "../../views/App";
+import { useUserContext } from "../../views/App";
 
 // const pages = [
 //   "Create Player",
@@ -31,7 +31,7 @@ const pages = [
 ];
 
 export default function TopNav() {
-  const { userName } = useGlobalContext();
+  const { userName } = useUserContext();
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {

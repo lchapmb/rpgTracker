@@ -1,5 +1,7 @@
+// import nav
 import TopNav from "./navs/TopNav";
 
+// imports from MUI
 import {
   Box,
   Container,
@@ -12,7 +14,8 @@ import {
   Button,
 } from "@mui/material";
 
-import { useGlobalContext } from "../views/App";
+// import context
+import { useCreaturesContext } from "../views/App";
 
 const testCreatures = [
   { id: 7, name: "Djara", health: 62, armour: 16 },
@@ -22,8 +25,10 @@ const testCreatures = [
 ];
 
 export default function CreatureList() {
-  const testClick = () => {
+  const { creaturesArr, setCreaturesArr } = useCreaturesContext();
+  const testClick = async () => {
     console.log("Test");
+    await setCreaturesArr(testCreatures);
   };
   return (
     <>
@@ -43,7 +48,7 @@ export default function CreatureList() {
           className="creatureListGrid"
           maxWidth="lg"
         >
-          {testCreatures.map((creature) => (
+          {creaturesArr.map((creature) => (
             <Grid item xs={2} sm={4} md={4} key={creature.id}>
               <Card variant="outlined">
                 <CardContent>
