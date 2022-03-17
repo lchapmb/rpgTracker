@@ -1,13 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 // import components
 import TopNav from "./navs/TopNav";
 
-// import hooks
-import UseForm from "../hooks/UseForm";
-
 // MUI imports
-
 import {
   Typography,
   Box,
@@ -30,22 +26,19 @@ export default function CreatePlayer() {
     armourValid: false,
   };
 
-  // get event handlers from UseForm hook
-  const { onInputChange, onSubmit, values } = UseForm(
-    initialState,
-    CreatePlayerCallback,
-    FormChangeCallback
-  );
+  const [values, setValues] = useState(initialState);
 
-  async function CreatePlayerCallback() {
+  async function CreatePlayerSubmit(event: React.MouseEvent) {
+    event.preventDefault();
     // send 'values' to database
     console.log("Values", values);
   }
 
-  async function FormChangeCallback(
+  async function CreatePlayerChange(
     event: React.ChangeEvent<HTMLInputElement>
   ) {
-    console.log("Form change", event.target.name, event.target.value);
+    setValues({ ...values, [event.target.name]: event.target.value });
+    console.log(event.target.name, event.target.value);
   }
 
   return (
@@ -77,7 +70,7 @@ export default function CreatePlayer() {
               ),
             }}
             variant="standard"
-            onChange={onInputChange}
+            onChange={CreatePlayerChange}
             name="nameString"
             required
           />
@@ -92,7 +85,7 @@ export default function CreatePlayer() {
               id="healthInputField"
               label="HP"
               variant="standard"
-              onChange={onInputChange}
+              onChange={CreatePlayerChange}
               name="healthInt"
               type="text"
             />
@@ -102,7 +95,7 @@ export default function CreatePlayer() {
               id="armourClassInputField"
               label="AC"
               variant="standard"
-              onChange={onInputChange}
+              onChange={CreatePlayerChange}
               name="armourInt"
             />
           </Box>
@@ -110,7 +103,7 @@ export default function CreatePlayer() {
           <Button
             id="creatureCreationSubmit"
             variant="contained"
-            onClick={onSubmit}
+            onClick={CreatePlayerSubmit}
           >
             Create Creature
           </Button>
