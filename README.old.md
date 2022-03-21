@@ -24,7 +24,7 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - [x] have names
 - [x] have health
 - [x] have ac
-- [] create player page has a list of already created players
+- [x] create player page has a list of already created players
 - [] players can be removed from the creatures list
 - [] player cards have initiative adder
 - [] have iniative
