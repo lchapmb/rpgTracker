@@ -38,7 +38,7 @@ export default function CreaturesPage() {
           <CreaturesList />
         </Box>
         <Box className="generatePartyButton" maxWidth="lg" mt={1}>
-          <Stack spacing={2} direction="row">
+          <Stack spacing={2} direction="row" justifyContent="center">
             <Button variant="contained" onClick={testPartyClick}>
               Generate Party
             </Button>
