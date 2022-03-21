@@ -3,17 +3,7 @@ import TopNav from "./navs/TopNav";
 import CreaturesList from "./CreaturesList";
 
 // imports from MUI
-import {
-  Box,
-  Container,
-  Typography,
-  Card,
-  Divider,
-  CardContent,
-  Grid,
-  Stack,
-  Button,
-} from "@mui/material";
+import { Box, Container, Typography, Stack, Button } from "@mui/material";
 
 // import context
 import { useCreaturesContext } from "../views/App";
