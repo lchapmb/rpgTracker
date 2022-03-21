@@ -27,7 +27,7 @@ import { useUserContext } from "../../views/App";
 const pages = [
   { title: "Home", path: "/" },
   { title: "Create Player", path: "/create-player" },
-  { title: "Creature List", path: "/creature-list" },
+  { title: "Creatures", path: "/creatures-page" },
 ];
 
 export default function TopNav() {
@@ -76,13 +76,11 @@ export default function TopNav() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.title}>
-                  <Typography textAlign="center">
-                    <Link className="navLink" to={page.path}>
-                      {page.title}
-                    </Link>
-                  </Typography>
-                </MenuItem>
+                <Link className="navLink" to={page.path} key={page.title}>
+                  <MenuItem>
+                    <Typography textAlign="center">{page.title}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -97,14 +95,14 @@ export default function TopNav() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page.title}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                <Link className="navLink" to={page.path}>
+              <Link className="navLink" to={page.path} key={page.title}>
+                <Button
+                  key={page.title}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
                   {page.title}
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             ))}
           </Box>
 

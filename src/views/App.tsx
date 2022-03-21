@@ -9,7 +9,7 @@ import "../css/App.css";
 // import components
 import HomePage from "../components/HomePage";
 import CreatePlayer from "../components/CreatePlayer";
-import CreatureList from "../components/CreatureList";
+import CreaturesPage from "../components/CreaturesPage";
 
 // import interface
 import CreatureInterface from "../interface/CreatureInterface";
@@ -46,7 +46,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/create-player" element={<CreatePlayer />} />
-      <Route path="/creature-list" element={<CreatureList />} />
+      <Route path="/creatures-page" element={<CreaturesPage />} />
     </Routes>
   );
 
