@@ -1,5 +1,15 @@
 // imports from MUI
-import { Typography, Card, Divider, CardContent, Grid } from "@mui/material";
+import {
+  Typography,
+  Divider,
+  List,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemText,
+} from "@mui/material";
+import { teal } from "@mui/material/colors";
+import PetsIcon from "@mui/icons-material/Pets";
 
 // import context
 import { useCreaturesContext } from "../views/App";
@@ -10,32 +20,32 @@ export default function CreaturesList() {
   return (
     <>
       {creaturesArr.length > 0 ? (
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-          className="creatureListGrid"
-          maxWidth="lg"
+        <List
+          sx={{
+            width: "100%",
+            maxWidth: 360,
+            bgcolor: "background.paper",
+          }}
         >
           {creaturesArr.map((creature) => (
-            <Grid item xs={2} sm={4} md={4} key={creature.id}>
-              <Card variant="outlined">
-                <CardContent>
-                  <Typography variant="h5" component="div">
-                    {creature.name}
-                  </Typography>
-                  <Divider />
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    HP: {creature.health}
-                  </Typography>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    AC: {creature.armour}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+            <ListItem key={creature.id} alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar sx={{ bgcolor: teal[900] }}>
+                  <PetsIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText>
+                <Typography variant="h6" component="div">
+                  {creature.name}
+                </Typography>
+                <Divider />
+                <Typography variant="subtitle1" color="text.secondary">
+                  HP: {creature.health} | AC: {creature.armour}
+                </Typography>
+              </ListItemText>
+            </ListItem>
           ))}
-        </Grid>
+        </List>
       ) : (
         <Typography variant="body1" component="div" gutterBottom align="center">
           No creatures found
