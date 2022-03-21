@@ -14,6 +14,12 @@ export default function HomePage() {
             RPG Tracker
           </Typography>
         </Box>
+        <Container>
+          <Typography variant="body1" align="center">
+            This project is a work in progress, the repository can be viewed{" "}
+            <a href="https://github.com/lchapmb/rpgTracker">here</a>.
+          </Typography>
+        </Container>
       </Container>
     </>
   );
