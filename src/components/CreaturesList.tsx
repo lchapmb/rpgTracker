@@ -37,7 +37,7 @@ export default function CreaturesList() {
           ))}
         </Grid>
       ) : (
-        <Typography variant="h5" component="div" gutterBottom align="center">
+        <Typography variant="body1" component="div" gutterBottom align="center">
           No creatures found
         </Typography>
       )}
