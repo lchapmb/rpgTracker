@@ -16,7 +16,7 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 
 - [x] homepage
 - [x] want to make use of routes
-- [] create player form
+- [x] create player form
 - [] edit player
 
 ## Players
