@@ -5,9 +5,7 @@ import CharacterModel from "../models/CharacterModel";
 
 // MUI imports
 import {
-  Typography,
   Box,
-  Container,
   TextField,
   InputAdornment,
   Button,
