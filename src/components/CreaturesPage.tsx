@@ -1,5 +1,6 @@
-// import nav
+// import components
 import TopNav from "./navs/TopNav";
+import CreaturesList from "./CreaturesList";
 
 // imports from MUI
 import {
@@ -25,58 +26,37 @@ const testCreatures = [
 ];
 
 export default function CreaturesPage() {
-  const { creaturesArr, setCreaturesArr } = useCreaturesContext();
-  const testClick = async () => {
+  const { setCreaturesArr } = useCreaturesContext();
+  const testPartyClick = async () => {
     console.log("Test");
     await setCreaturesArr(testCreatures);
+  };
+  const clearPartyClick = () => {
+    console.log("Clear");
+    setCreaturesArr([]);
   };
   return (
     <>
       <TopNav />
-      <Container className="homeContainer" maxWidth="lg">
-        <Box className="homeBox" sx={{ height: "auto" }}>
+      <Container>
+        <Box className="creatureTitleBox" sx={{ height: "auto" }}>
           <Typography variant="h3" component="div" gutterBottom align="center">
             Creature List
           </Typography>
         </Box>
-      </Container>
-      <Container className="creatureListContainer" maxWidth="lg">
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-          className="creatureListGrid"
-          maxWidth="lg"
-        >
-          {creaturesArr.map((creature) => (
-            <Grid item xs={2} sm={4} md={4} key={creature.id}>
-              <Card variant="outlined">
-                <CardContent>
-                  <Typography variant="h5" component="div">
-                    {creature.name}
-                  </Typography>
-                  <Divider />
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    HP: {creature.health}
-                  </Typography>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    AC: {creature.armour}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-        {/* <Typography variant="h5" component="div" gutterBottom align="center">
-          No creatures found
-        </Typography> */}
-      </Container>
-      <Container className="creatureListContainer" maxWidth="lg">
-        <Stack spacing={2} direction="row">
-          <Button variant="contained" onClick={testClick}>
-            Generate Party
-          </Button>
-        </Stack>
+        <Box className="creatureListContainer" maxWidth="lg" mt={1}>
+          <CreaturesList />
+        </Box>
+        <Box className="generatePartyButton" maxWidth="lg" mt={1}>
+          <Stack spacing={2} direction="row">
+            <Button variant="contained" onClick={testPartyClick}>
+              Generate Party
+            </Button>
+            <Button variant="contained" onClick={clearPartyClick}>
+              Clear Party
+            </Button>
+          </Stack>
+        </Box>
       </Container>
     </>
   );
