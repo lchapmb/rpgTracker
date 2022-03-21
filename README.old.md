@@ -24,6 +24,9 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - [x] have names
 - [x] have health
 - [x] have ac
+- [] create player page has a list of already created players
+- [] players can be removed from the creatures list
+- [] player cards have initiative adder
 - [] have iniative
 - [] have status
 - [] have death rolls
@@ -50,6 +53,7 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 
 ## Combat
 
+- [] useNavigate from React Router for iniative submit
 - [] order by iniative
 - [] alter health
 - [] display ac
