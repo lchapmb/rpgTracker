@@ -7,15 +7,23 @@ import {
   ListItemAvatar,
   Avatar,
   ListItemText,
+  IconButton,
 } from "@mui/material";
 import { teal } from "@mui/material/colors";
 import PetsIcon from "@mui/icons-material/Pets";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 // import context
 import { useCreaturesContext } from "../views/App";
 
 export default function CreaturesList() {
-  const { creaturesArr } = useCreaturesContext();
+  const { creaturesArr, setCreaturesArr } = useCreaturesContext();
+
+  const removeCreature = (creatureId: number) => {
+    console.log(`It's ${creatureId}, end them!`);
+    const arr = creaturesArr;
+    console.log(arr);
+  };
 
   return (
     <>
@@ -42,6 +50,9 @@ export default function CreaturesList() {
                   HP: {creature.health} | AC: {creature.armour}
                 </Typography>
               </ListItemText>
+              <IconButton onClick={() => removeCreature(creature.id)}>
+                <DeleteIcon />
+              </IconButton>
             </ListItem>
           ))}
         </List>
