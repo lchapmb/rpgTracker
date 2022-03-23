@@ -18,6 +18,7 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - [x] want to make use of routes
 - [x] create player form
 - [] edit player
+- [] redesign homepage with obvious links for creatures list, create player - mobile first
 
 ## UX/UI observations
 
