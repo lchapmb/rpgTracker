@@ -19,6 +19,10 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - [x] create player form
 - [] edit player
 
+## UX/UI observations
+
+- [] mobile user tried tapping the homepage title box to continue within the app
+
 ## Players
 
 - [x] have names
