@@ -19,11 +19,12 @@ import { useCreaturesContext } from "../views/App";
 export default function CreaturesList() {
   const { creaturesArr, setCreaturesArr } = useCreaturesContext();
 
-  const removeCreature = (creatureId: number) => {
-    console.log(`It's ${creatureId}, end them!`);
-    const arr = creaturesArr;
-    console.log(arr);
-  };
+  async function removeCreature(creatureId: number) {
+    const filteredCreaturesArr = creaturesArr.filter(
+      (creature) => creature.id !== creatureId
+    );
+    await setCreaturesArr(filteredCreaturesArr);
+  }
 
   return (
     <>
