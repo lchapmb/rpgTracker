@@ -22,7 +22,7 @@ export default function InitiativeDialog(props: InitiativeDialogProps) {
   const [values, setValues] = useState(initialState);
 
   // get props
-  const { onClose, open, selectedValue } = props;
+  const { onClose, open, selectedCreature } = props;
 
   // handle dialog closing
   function handleClose() {
@@ -38,13 +38,13 @@ export default function InitiativeDialog(props: InitiativeDialogProps) {
   // handle input submit
   const CreateCombatantSubmit = () => {
     console.log(values);
-    console.log(selectedValue);
+    console.log(selectedCreature);
     onClose();
   };
 
   return (
     <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>{selectedValue.name}</DialogTitle>
+      <DialogTitle>{selectedCreature.name}</DialogTitle>
       <FormControl sx={{ m: 1 }} variant="filled">
         <TextField
           id="armourClassInputField"
