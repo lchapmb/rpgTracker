@@ -4,12 +4,14 @@ import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PetsIcon from "@mui/icons-material/Pets";
 import HomeIcon from "@mui/icons-material/Home";
+import SportsMmaIcon from "@mui/icons-material/SportsMma";
 
 export default function BottomNav() {
   const pages = [
     { title: "Home", path: "/", icon: <HomeIcon /> },
     { title: "Create Player", path: "/create-player", icon: <AddCircleIcon /> },
     { title: "Creatures", path: "/creatures-page", icon: <PetsIcon /> },
+    { title: "Combat", path: "/combat-page", icon: <SportsMmaIcon /> },
   ];
 
   return (
@@ -23,7 +25,7 @@ export default function BottomNav() {
       }}
       elevation={3}
     >
-      <BottomNavigation showLabels>
+      <BottomNavigation>
         {pages.map((page) => (
           <Link to={page.path} key={page.title}>
             <BottomNavigationAction label="Create Creature" icon={page.icon} />

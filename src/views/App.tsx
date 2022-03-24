@@ -10,6 +10,7 @@ import "../css/App.css";
 import HomePage from "../components/HomePage";
 import CreatePlayer from "../components/CreatePlayer";
 import CreaturesPage from "../components/CreaturesPage";
+import CombatPage from "../components/CombatPage";
 
 // import interface
 import CreatureInterface from "../interface/CreatureInterface";
@@ -47,6 +48,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/create-player" element={<CreatePlayer />} />
       <Route path="/creatures-page" element={<CreaturesPage />} />
+      <Route path="/combat-page" element={<CombatPage />} />
     </Routes>
   );
 

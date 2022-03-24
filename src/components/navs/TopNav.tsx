@@ -28,6 +28,7 @@ const pages = [
   { title: "Home", path: "/" },
   { title: "Create Player", path: "/create-player" },
   { title: "Creatures", path: "/creatures-page" },
+  { title: "Combat", path: "/combat-page" },
 ];
 
 export default function TopNav() {
