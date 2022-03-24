@@ -1,6 +1,8 @@
+// import navs
 import TopNav from "./navs/TopNav";
-import BottomNav from "./nav/BottomNav";
+import BottomNav from "./navs/BottomNav";
 
+// imports for MUI
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -21,8 +23,8 @@ export default function HomePage() {
             <a href="https://github.com/lchapmb/rpgTracker">here</a>.
           </Typography>
         </Container>
+        <BottomNav />
       </Container>
-      <BottomNav />
     </>
   );
 }

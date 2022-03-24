@@ -1,5 +1,6 @@
 // import components
 import TopNav from "./navs/TopNav";
+import BottomNav from "./navs/BottomNav";
 import CreatePlayerForm from "./CreatePlayerForm";
 import CreatureShortList from "./CreatureShortList";
 
@@ -19,6 +20,7 @@ export default function CreatePlayer() {
         </Box>
         <Divider />
         <CreatureShortList />
+        <BottomNav />
       </Container>
     </>
   );

@@ -1,5 +1,6 @@
 // import components
 import TopNav from "./navs/TopNav";
+import BottomNav from "./navs/BottomNav";
 import CreaturesList from "./CreaturesList";
 
 // imports from MUI
@@ -55,6 +56,7 @@ export default function CreaturesPage() {
             </Button>
           </Stack>
         </Box>
+        <BottomNav />
       </Container>
     </>
   );
