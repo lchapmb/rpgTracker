@@ -1,4 +1,5 @@
 import TopNav from "./navs/TopNav";
+import BottomNav from "./nav/BottomNav";
 
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -9,7 +10,7 @@ export default function HomePage() {
     <>
       <TopNav />
       <Container className="homeContainer" maxWidth="lg">
-        <Box className="homeBox" sx={{ height: "50vh" }}>
+        <Box className="homeBox">
           <Typography variant="h1" component="div" gutterBottom align="center">
             RPG Tracker
           </Typography>
@@ -21,6 +22,7 @@ export default function HomePage() {
           </Typography>
         </Container>
       </Container>
+      <BottomNav />
     </>
   );
 }
