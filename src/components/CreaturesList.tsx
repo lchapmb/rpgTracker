@@ -1,3 +1,6 @@
+// import context
+import { useCreaturesContext } from "../views/App";
+
 // imports from MUI
 import {
   Typography,
@@ -12,9 +15,6 @@ import {
 import { teal } from "@mui/material/colors";
 import PetsIcon from "@mui/icons-material/Pets";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-// import context
-import { useCreaturesContext } from "../views/App";
 
 export default function CreaturesList() {
   const { creaturesArr, setCreaturesArr } = useCreaturesContext();
