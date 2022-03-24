@@ -20,13 +20,23 @@ import PetsIcon from "@mui/icons-material/Pets";
 
 // import interface
 import CreatureInterface from "../interface/CreatureInterface";
+import Character from "../models/CharacterModel";
 
 export default function CreaturesForCombat() {
+  // define initial state
+  const initialState = {
+    selectedCreature: new Character("", 0, 0),
+  };
+
+  // set state
+  const [values, setValues] = useState(initialState);
+
   const { creaturesArr } = useCreaturesContext();
 
   const [open, setOpen] = useState(false);
 
   async function openInitiativeDialog(creature: CreatureInterface) {
+    setValues({ ...values, selectedCreature: creature });
     console.log(creature);
     setOpen(true);
   }
@@ -60,7 +70,7 @@ export default function CreaturesForCombat() {
           <InitiativeDialog
             open={open}
             onClose={handleClose}
-            selectedValue={creature}
+            selectedCreature={values.selectedCreature}
           />
         </ListItem>
       ))}
