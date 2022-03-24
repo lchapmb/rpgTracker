@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // imports for MUI
 import {
   Dialog,
@@ -6,21 +8,19 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import CreatureInterface from "../interface/CreatureInterface";
 
 // import interface
-
-interface InitiativeDialogProps {
-  open: boolean;
-  onClose: (value: string) => void;
-  selectedValue: CreatureInterface;
-}
+import InitiativeDialogProps from "../interface/IniativeDialogProps";
 
 export default function InitiativeDialog(props: InitiativeDialogProps) {
   const { onClose, open, selectedValue } = props;
 
   const handleClose = () => {
-    onClose("Placeholder");
+    onClose();
+  };
+
+  const CreateCombatantSubmit = () => {
+    onClose();
   };
 
   return (
@@ -40,7 +40,7 @@ export default function InitiativeDialog(props: InitiativeDialogProps) {
         <Button
           id="creatureCreationSubmit"
           variant="contained"
-          // onClick={CreateCombatantSubmit}
+          onClick={CreateCombatantSubmit}
         >
           Create Combatant
         </Button>
