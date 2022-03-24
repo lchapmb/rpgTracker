@@ -1,5 +1,8 @@
+// import navs
 import TopNav from "./navs/TopNav";
+import BottomNav from "./navs/BottomNav";
 
+// imports for MUI
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -9,7 +12,7 @@ export default function HomePage() {
     <>
       <TopNav />
       <Container className="homeContainer" maxWidth="lg">
-        <Box className="homeBox" sx={{ height: "50vh" }}>
+        <Box className="homeBox">
           <Typography variant="h1" component="div" gutterBottom align="center">
             RPG Tracker
           </Typography>
@@ -20,6 +23,7 @@ export default function HomePage() {
             <a href="https://github.com/lchapmb/rpgTracker">here</a>.
           </Typography>
         </Container>
+        <BottomNav />
       </Container>
     </>
   );

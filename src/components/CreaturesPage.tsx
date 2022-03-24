@@ -1,5 +1,6 @@
 // import components
 import TopNav from "./navs/TopNav";
+import BottomNav from "./navs/BottomNav";
 import CreaturesList from "./CreaturesList";
 
 // imports from MUI
@@ -8,21 +9,29 @@ import { Box, Container, Typography, Stack, Button } from "@mui/material";
 // import context
 import { useCreaturesContext } from "../views/App";
 
+// import model
+import CharacterModel from "../models/CharacterModel";
+
 const testCreatures = [
-  { id: 7, name: "Djara", health: 62, armour: 16 },
-  { id: 11, name: "Gavin", health: 102, armour: 18 },
-  { id: 12, name: "Tonloy", health: 78, armour: 15 },
-  { id: 67, name: "Randy", health: 42, armour: 14 },
+  { name: "Djara", health: 62, armour: 16 },
+  { name: "Gavin", health: 102, armour: 18 },
+  { name: "Tonloy", health: 78, armour: 15 },
+  { name: "Randy", health: 42, armour: 14 },
 ];
 
 export default function CreaturesPage() {
   const { setCreaturesArr } = useCreaturesContext();
   const testPartyClick = async () => {
-    console.log("Test");
-    await setCreaturesArr(testCreatures);
+    const testClassArr = testCreatures.map((creature) => {
+      return new CharacterModel(
+        creature.name,
+        creature.health,
+        creature.armour
+      );
+    });
+    await setCreaturesArr(testClassArr);
   };
   const clearPartyClick = () => {
-    console.log("Clear");
     setCreaturesArr([]);
   };
   return (
@@ -47,6 +56,7 @@ export default function CreaturesPage() {
             </Button>
           </Stack>
         </Box>
+        <BottomNav />
       </Container>
     </>
   );
