@@ -27,9 +27,13 @@ export default function BottomNav() {
     >
       <BottomNavigation>
         {pages.map((page) => (
-          <Link to={page.path} key={page.title}>
-            <BottomNavigationAction label="Create Creature" icon={page.icon} />
-          </Link>
+          <BottomNavigationAction
+            label="Create Creature"
+            component={Link}
+            to={page.path}
+            key={page.title}
+            icon={page.icon}
+          />
         ))}
       </BottomNavigation>
     </Paper>
