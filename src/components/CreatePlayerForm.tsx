@@ -20,7 +20,7 @@ import { useCreaturesContext } from "../views/App";
 export default function CreatePlayerForm() {
   const { creaturesArr, setCreaturesArr } = useCreaturesContext();
 
-  // define inital state
+  // define initial state
   const initialState = {
     nameString: "",
     nameValid: false,
