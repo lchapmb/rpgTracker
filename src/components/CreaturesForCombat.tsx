@@ -31,9 +31,9 @@ export default function CreaturesForCombat() {
     setOpen(true);
   }
 
-  const handleClose = () => {
+  function handleClose() {
     setOpen(false);
-  };
+  }
 
   return (
     <List
