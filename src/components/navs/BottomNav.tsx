@@ -1,27 +1,35 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Link } from "react-router-dom";
 
-export default function SimpleBottomNavigation() {
-  const [value, setValue] = React.useState(0);
+import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import PetsIcon from "@mui/icons-material/Pets";
+import HomeIcon from "@mui/icons-material/Home";
+
+export default function BottomNav() {
+  const pages = [
+    { title: "Home", path: "/", icon: <HomeIcon /> },
+    { title: "Create Player", path: "/create-player", icon: <AddCircleIcon /> },
+    { title: "Creatures", path: "/creatures-page", icon: <PetsIcon /> },
+  ];
 
   return (
-    <Box sx={{ width: 500 }}>
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-      >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+    <Paper
+      sx={{
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        display: { xs: "block", md: "none" },
+      }}
+      elevation={3}
+    >
+      <BottomNavigation showLabels>
+        {pages.map((page) => (
+          <Link to={page.path} key={page.title}>
+            <BottomNavigationAction label="Create Creature" icon={page.icon} />
+          </Link>
+        ))}
       </BottomNavigation>
-    </Box>
+    </Paper>
   );
 }
