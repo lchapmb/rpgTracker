@@ -12,6 +12,9 @@ import {
 // import interface
 import InitiativeDialogProps from "../interface/IniativeDialogProps";
 
+// import model
+import Combatant from "../models/CombatantModel";
+
 export default function InitiativeDialog(props: InitiativeDialogProps) {
   // define initial state
   const initialState = {
@@ -26,19 +29,20 @@ export default function InitiativeDialog(props: InitiativeDialogProps) {
 
   // handle dialog closing
   function handleClose() {
+    setValues(initialState);
     onClose();
   }
 
   // handle input change
   function InitiativeChange(event: React.ChangeEvent<HTMLInputElement>) {
-    console.log(event.target.value);
     setValues({ ...values, [event.target.name]: event.target.value });
   }
 
   // handle input submit
   const CreateCombatantSubmit = () => {
-    console.log(values);
-    console.log(selectedCreature);
+    const newCombatant = new Combatant(values.initiativeInt, selectedCreature);
+    console.log(newCombatant);
+    setValues(initialState);
     onClose();
   };
 
