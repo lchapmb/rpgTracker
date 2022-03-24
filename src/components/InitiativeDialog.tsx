@@ -13,13 +13,32 @@ import {
 import InitiativeDialogProps from "../interface/IniativeDialogProps";
 
 export default function InitiativeDialog(props: InitiativeDialogProps) {
-  const { onClose, open, selectedValue } = props;
-
-  const handleClose = () => {
-    onClose();
+  // define initial state
+  const initialState = {
+    initiativeInt: 0,
   };
 
+  // set state
+  const [values, setValues] = useState(initialState);
+
+  // get props
+  const { onClose, open, selectedValue } = props;
+
+  // handle dialog closing
+  function handleClose() {
+    onClose();
+  }
+
+  // handle input change
+  function InitiativeChange(event: React.ChangeEvent<HTMLInputElement>) {
+    console.log(event.target.value);
+    setValues({ ...values, [event.target.name]: event.target.value });
+  }
+
+  // handle input submit
   const CreateCombatantSubmit = () => {
+    console.log(values);
+    console.log(selectedValue);
     onClose();
   };
 
@@ -31,9 +50,9 @@ export default function InitiativeDialog(props: InitiativeDialogProps) {
           id="armourClassInputField"
           label="Initiative"
           variant="outlined"
-          // onChange={InitiativeChange}
+          onChange={InitiativeChange}
           name="initiativeInt"
-          // value={values.iniativeInt || ""}
+          value={values.initiativeInt || ""}
         />
       </FormControl>
       <FormControl sx={{ m: 1 }} variant="filled">
