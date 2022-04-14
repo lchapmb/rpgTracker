@@ -1,15 +1,17 @@
+// import context
+import { useInitiativeContext } from "../views/App";
+
 // imports from mui
 import { AvatarGroup, Avatar } from "@mui/material";
-import { deepOrange } from "@mui/material/colors";
 
 export default function InitiativeAvatars() {
+  const { initiativeArr, setInitiativeArr } = useInitiativeContext();
+
   return (
-    <AvatarGroup max={4} sx={{ position: "sticky", top: 0, zIndex: 1 }}>
-      <Avatar
-        sx={{ bgcolor: deepOrange[500] }}
-        alt="Remy Sharp"
-        src="/broken-image.jpg"
-      />
+    <AvatarGroup max={10} sx={{ position: "sticky", top: 0, zIndex: 1 }}>
+      {initiativeArr.map((creature) => {
+        return <Avatar alt={`${creature.name}`}>{creature.name[0]}</Avatar>;
+      })}
     </AvatarGroup>
   );
 }

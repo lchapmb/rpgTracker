@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+// import context
+import { useInitiativeContext } from "../views/App";
+
 // imports for MUI
 import {
   Dialog,
@@ -16,6 +19,8 @@ import InitiativeDialogProps from "../interface/IniativeDialogProps";
 import Combatant from "../models/CombatantModel";
 
 export default function InitiativeDialog(props: InitiativeDialogProps) {
+  const { initiativeArr, setInitiativeArr } = useInitiativeContext();
+
   // define initial state
   const initialState = {
     initiativeInt: 0,
@@ -41,7 +46,7 @@ export default function InitiativeDialog(props: InitiativeDialogProps) {
   // handle input submit
   const CreateCombatantSubmit = () => {
     const newCombatant = new Combatant(values.initiativeInt, selectedCreature);
-    console.log(newCombatant);
+    setInitiativeArr([...initiativeArr, newCombatant]);
     setValues(initialState);
     onClose();
   };

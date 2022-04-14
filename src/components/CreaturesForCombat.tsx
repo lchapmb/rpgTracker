@@ -1,10 +1,7 @@
 import { useState } from "react";
 
 // import context
-import { useCreaturesContext } from "../views/App";
-
-// import components
-import InitiativeDialog from "./InitiativeDialog";
+import { useInitiativeContext } from "../views/App";
 
 import {
   Typography,
@@ -19,7 +16,6 @@ import { teal } from "@mui/material/colors";
 import PetsIcon from "@mui/icons-material/Pets";
 
 // import interface
-import CreatureInterface from "../interface/CreatureInterface";
 import Character from "../models/CharacterModel";
 
 export default function CreaturesForCombat() {
@@ -31,19 +27,7 @@ export default function CreaturesForCombat() {
   // set state
   const [values, setValues] = useState(initialState);
 
-  const { creaturesArr } = useCreaturesContext();
-
-  const [open, setOpen] = useState(false);
-
-  async function openInitiativeDialog(creature: CreatureInterface) {
-    setValues({ ...values, selectedCreature: creature });
-    console.log(creature);
-    setOpen(true);
-  }
-
-  function handleClose() {
-    setOpen(false);
-  }
+  const { initiativeArr } = useInitiativeContext();
 
   return (
     <List
@@ -52,7 +36,7 @@ export default function CreaturesForCombat() {
         bgcolor: "background.paper",
       }}
     >
-      {creaturesArr.map((creature) => (
+      {initiativeArr.map((creature) => (
         <ListItem key={creature.id} alignItems="flex-start">
           <ListItemAvatar>
             <Avatar sx={{ bgcolor: teal[900] }}>
@@ -63,15 +47,10 @@ export default function CreaturesForCombat() {
             <Typography variant="h6" component="div">
               {creature.name}
             </Typography>
+            <Typography variant="subtitle1" component="div">
+              Initiative: {creature.initiative}
+            </Typography>
           </ListItemText>
-          <Button onClick={() => openInitiativeDialog(creature)}>
-            Add To Initiative
-          </Button>
-          <InitiativeDialog
-            open={open}
-            onClose={handleClose}
-            selectedCreature={values.selectedCreature}
-          />
         </ListItem>
       ))}
     </List>
