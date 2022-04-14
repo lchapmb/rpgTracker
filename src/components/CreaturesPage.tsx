@@ -2,6 +2,7 @@
 import TopNav from "./navs/TopNav";
 import BottomNav from "./navs/BottomNav";
 import CreaturesList from "./CreaturesList";
+import InitiativeAvatars from "./InitiativeAvatars";
 
 // imports from MUI
 import { Box, Container, Typography, Stack, Button } from "@mui/material";
@@ -43,6 +44,7 @@ export default function CreaturesPage() {
             Creature List
           </Typography>
         </Box>
+        <InitiativeAvatars />
         <Box className="creatureListContainer" maxWidth="lg" mt={1}>
           <CreaturesList />
         </Box>
