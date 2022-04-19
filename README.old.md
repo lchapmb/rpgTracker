@@ -60,9 +60,8 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 
 - [x] useNavigate from React Router for iniative submit
 - [] once initiative added, players removed from list
-- [] displays creatures by initiative
 - [] track turn order/who has taken a turn
-- [] order by iniative
+- [x] order by iniative
 - [] alter health
 - [] display ac
 - [] other stuff I'm sure
