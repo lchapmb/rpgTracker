@@ -18,7 +18,7 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - [x] want to make use of routes
 - [x] create player form
 - [] edit player
-- [] redesign homepage with obvious links for creatures list, create player - mobile first
+- [x] redesign homepage with obvious links for creatures list, create player - mobile first
 
 ## UX/UI observations
 
@@ -30,9 +30,9 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 - [x] have health
 - [x] have ac
 - [x] create player page has a list of already created players
-- [] players can be removed from the creatures list
-- [] player cards have initiative adder
-- [] have iniative
+- [x] players can be removed from the creatures list
+- [x] player cards have initiative adder
+- [x] have iniative
 - [] have status
 - [] have death rolls
 - [] have advantage/disadvantage
@@ -58,8 +58,10 @@ A project to create a battle tracker for GMing an rpg, focussing on DnD
 
 ## Combat
 
-- [] useNavigate from React Router for iniative submit
-- [] order by iniative
+- [x] useNavigate from React Router for iniative submit
+- [] once initiative added, players removed from list
+- [] track turn order/who has taken a turn
+- [x] order by iniative
 - [] alter health
 - [] display ac
 - [] other stuff I'm sure

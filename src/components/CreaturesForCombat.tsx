@@ -1,10 +1,7 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 // import context
-import { useCreaturesContext } from "../views/App";
-
-// import components
-import InitiativeDialog from "./InitiativeDialog";
+import { useInitiativeContext } from "../views/App";
 
 import {
   Typography,
@@ -13,37 +10,36 @@ import {
   ListItemAvatar,
   Avatar,
   ListItemText,
-  Button,
 } from "@mui/material";
 import { teal } from "@mui/material/colors";
 import PetsIcon from "@mui/icons-material/Pets";
 
 // import interface
-import CreatureInterface from "../interface/CreatureInterface";
-import Character from "../models/CharacterModel";
+// import CombatantInterface from "../interface/CombatantInterface";
 
 export default function CreaturesForCombat() {
   // define initial state
-  const initialState = {
-    selectedCreature: new Character("", 0, 0),
-  };
+  // const initialState = {
+  //   initiativeArr: Array<CombatantInterface>(),
+  // };
 
   // set state
-  const [values, setValues] = useState(initialState);
+  // const [values, setValues] = useState(initialState);
 
-  const { creaturesArr } = useCreaturesContext();
+  const { initiativeArr } = useInitiativeContext();
 
-  const [open, setOpen] = useState(false);
+  const initiativeSort = (
+    a: { initiative: number },
+    b: { initiative: number }
+  ) => {
+    if (a.initiative < b.initiative) return 1;
+    else if (a.initiative > b.initiative) return -1;
+    else return 0;
+  };
 
-  async function openInitiativeDialog(creature: CreatureInterface) {
-    setValues({ ...values, selectedCreature: creature });
-    console.log(creature);
-    setOpen(true);
-  }
+  let sortedCombatants = initiativeArr.sort(initiativeSort);
 
-  function handleClose() {
-    setOpen(false);
-  }
+  // setValues(sortedCombatants);
 
   return (
     <List
@@ -52,7 +48,7 @@ export default function CreaturesForCombat() {
         bgcolor: "background.paper",
       }}
     >
-      {creaturesArr.map((creature) => (
+      {sortedCombatants.map((creature) => (
         <ListItem key={creature.id} alignItems="flex-start">
           <ListItemAvatar>
             <Avatar sx={{ bgcolor: teal[900] }}>
@@ -63,15 +59,10 @@ export default function CreaturesForCombat() {
             <Typography variant="h6" component="div">
               {creature.name}
             </Typography>
+            <Typography variant="subtitle1" component="div">
+              Initiative: {creature.initiative}
+            </Typography>
           </ListItemText>
-          <Button onClick={() => openInitiativeDialog(creature)}>
-            Add To Initiative
-          </Button>
-          <InitiativeDialog
-            open={open}
-            onClose={handleClose}
-            selectedCreature={values.selectedCreature}
-          />
         </ListItem>
       ))}
     </List>

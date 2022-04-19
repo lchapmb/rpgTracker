@@ -37,7 +37,7 @@ export default function CreatePlayerForm() {
     // deconstruct values
     const { nameString, healthInt, armourInt } = values;
     // create character with values
-    const character = new CharacterModel(nameString, healthInt, armourInt);
+    const character = new CharacterModel(nameString, +healthInt, +armourInt);
     // send 'values' to context
     setCreaturesArr([...creaturesArr, character]);
     // reset values
@@ -110,7 +110,7 @@ export default function CreatePlayerForm() {
         {/* submit button */}
         <FormControl sx={{ m: 1 }} variant="filled">
           <Button
-            id="creatureCreationSubmit"
+            id="CreatureCreationSubmit"
             variant="contained"
             onClick={CreatePlayerSubmit}
           >
