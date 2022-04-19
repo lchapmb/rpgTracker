@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+// import context
+import { useInitiativeContext } from "../views/App";
+
 // imports for MUI
 import {
   Dialog,
@@ -16,6 +19,8 @@ import InitiativeDialogProps from "../interface/IniativeDialogProps";
 import Combatant from "../models/CombatantModel";
 
 export default function InitiativeDialog(props: InitiativeDialogProps) {
+  const { initiativeArr, setInitiativeArr } = useInitiativeContext();
+
   // define initial state
   const initialState = {
     initiativeInt: 0,
@@ -34,24 +39,27 @@ export default function InitiativeDialog(props: InitiativeDialogProps) {
   }
 
   // handle input change
-  function InitiativeChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setValues({ ...values, [event.target.name]: event.target.value });
+  async function InitiativeChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setValues({ ...values, [event.target.name]: +event.target.value });
   }
 
   // handle input submit
-  const CreateCombatantSubmit = () => {
+  async function CreateCombatantSubmit() {
+    // create combatant
     const newCombatant = new Combatant(values.initiativeInt, selectedCreature);
-    console.log(newCombatant);
+    // set combatant in array in context
+    setInitiativeArr([...initiativeArr, newCombatant]);
+    // reset state and close dialog
     setValues(initialState);
     onClose();
-  };
+  }
 
   return (
     <Dialog onClose={handleClose} open={open}>
       <DialogTitle>{selectedCreature.name}</DialogTitle>
       <FormControl sx={{ m: 1 }} variant="filled">
         <TextField
-          id="armourClassInputField"
+          id="initiativeInputField"
           label="Initiative"
           variant="outlined"
           onChange={InitiativeChange}
