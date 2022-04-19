@@ -5,7 +5,7 @@ import { useInitiativeContext } from "../views/App";
 import { AvatarGroup, Avatar } from "@mui/material";
 
 export default function InitiativeAvatars() {
-  const { initiativeArr, setInitiativeArr } = useInitiativeContext();
+  const { initiativeArr } = useInitiativeContext();
 
   return (
     <AvatarGroup max={10} sx={{ position: "sticky", top: 0, zIndex: 1 }}>
