@@ -11,7 +11,7 @@ export default function CombatPage() {
     <>
       <TopNav />
       <Container>
-        <Box className="creatureTitleBox" sx={{ height: "auto" }}>
+        <Box className="combatTitleBox" sx={{ height: "auto" }}>
           <Typography variant="h3" component="div" gutterBottom align="center">
             Combat
           </Typography>
